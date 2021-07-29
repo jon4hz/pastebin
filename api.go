@@ -25,6 +25,14 @@ type API struct {
 	Key    string       // api_dev_key
 }
 
+// NewClient returns a new API client
+func NewClient(key string) *API {
+	return &API{
+		Key:    key,
+		Client: new(http.Client),
+	}
+}
+
 func (a *API) client() (c *http.Client) {
 	c = a.Client
 	if c == nil {
